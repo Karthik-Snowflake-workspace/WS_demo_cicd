@@ -1,0 +1,87 @@
+branch_data:
+  dcm_project:
+    approvers: []
+    dcm_dir: dcm_ws_demo
+    dcm_target: WS_DEMO_DCM_METADATA
+    is_default: true
+    is_default_target: true
+    is_default_true: true
+    require_pr: false
+    required_approvals: 0
+    sf_databases:
+    - WS_DEMO_CICD_METADATA
+    sf_roles:
+    - DBA_ADMIN
+    - DBA_FR
+    sf_schemas:
+    - DCM_CONFIG
+    sf_user: github_ws_demo_project_user
+  dev:
+    approvers: []
+    dcm_dir: dcm_ws_demo
+    dcm_target: WS_DEMO_DCM_dev
+    require_pr: false
+    required_approvals: 0
+    sf_databases:
+    - WS_DEMO_DEVOPS_DB_dev
+    sf_roles:
+    - DBA_ADMIN
+    - DBA_FR
+    sf_schemas: &id001
+    - sales
+    - marketing
+    sf_user: github_ws_demo_dev_user
+  main:
+    approvers:
+    - karthikr-63
+    dcm_dir: dcm_ws_demo
+    dcm_target: WS_DEMO_DCM_main
+    require_pr: true
+    required_approvals: 1
+    sf_databases:
+    - WS_DEMO_DEVOPS_DB_main
+    sf_roles:
+    - DBA_ADMIN
+    - DBA_FR
+    sf_schemas: *id001
+    sf_user: github_ws_demo_main_user
+branch_sequence:
+- dev
+- main
+- dcm_project
+collaborators: []
+dcm_dir: dcm_ws_demo
+dcm_project_name: dcm_ws_demo
+escape_protection_branches: []
+github:
+  files_to_copy:
+  - requirements.txt
+  - snowflake.toml
+  folders_to_copy:
+  - Projects
+  - dcm_scripts_template
+  - helper_scripts
+  repo_visibility: public
+  source_branch: main
+  source_repository: https://github.com/kipibi/CI_CD_STANDARD_TIER_OFFERING_TEMPLATE
+owner: Karthik-Snowflake-workspace
+project: WS_demo
+project_description: Snowflake Gated GitOps Core Offering
+repo_name: WS_demo_cicd
+roles:
+  DBA_ADMIN:
+    create: true
+    ownership: true
+    read: true
+  DBA_FR:
+    create: true
+    ownership: false
+    read: true
+setup_dbt: false
+setup_dcm: true
+setup_repo: true
+setup_snowflake: true
+snowflake_global:
+  account_identifier: KIPI-KIPI_CUSTOMER
+  admin_role: ACCOUNTADMIN
+  warehouse: WALTER_SURFACE_DEMO
