@@ -1,0 +1,62 @@
+manifest_version: 2
+type: DCM_PROJECT
+default_target: WS_DEMO_DCM_METADATA
+targets:
+  WS_DEMO_DCM_METADATA:
+    account_identifier: KIPI-KIPI_CUSTOMER
+    project_name: WS_DEMO_CICD_METADATA.DCM_CONFIG.DCM_WS_DEMO_DCM_PROJECT
+    project_owner: ACCOUNTADMIN
+    templating_config: dcm_project
+  WS_DEMO_DCM_dev:
+    account_identifier: KIPI-KIPI_CUSTOMER
+    project_name: WS_DEMO_CICD_METADATA.DCM_CONFIG.DCM_WS_DEMO_DEV
+    project_owner: ACCOUNTADMIN
+    templating_config: dev
+  WS_DEMO_DCM_main:
+    account_identifier: KIPI-KIPI_CUSTOMER
+    project_name: WS_DEMO_CICD_METADATA.DCM_CONFIG.DCM_WS_DEMO_MAIN
+    project_owner: ACCOUNTADMIN
+    templating_config: main
+templating:
+  defaults:
+    project_owner_role: ACCOUNTADMIN
+    warehouse: WALTER_SURFACE_DEMO
+  configurations:
+    dcm_project:
+      environment: dcm_project
+      env_suffix: _dcm_project
+      database: WS_DEMO_CICD_METADATA
+      schemas:
+      - DCM_CONFIG
+      project_name: WS_DEMO_CICD_METADATA.DCM_CONFIG.DCM_WS_DEMO_DCM_PROJECT
+      project_owner: ACCOUNTADMIN
+      roles:
+        DBA_ADMIN: DBA_ADMIN
+        DBA_FR: DBA_FR
+      is_default_target: true
+    dev:
+      environment: dev
+      env_suffix: _dev
+      database: WS_DEMO_DEVOPS_DB_dev
+      schemas:
+      - sales
+      - marketing
+      project_name: WS_DEMO_CICD_METADATA.DCM_CONFIG.DCM_WS_DEMO_DEV
+      project_owner: ACCOUNTADMIN
+      roles:
+        DBA_ADMIN: DBA_ADMIN
+        DBA_FR: DBA_FR
+      is_default_target: false
+    main:
+      environment: main
+      env_suffix: _main
+      database: WS_DEMO_DEVOPS_DB_main
+      schemas:
+      - sales
+      - marketing
+      project_name: WS_DEMO_CICD_METADATA.DCM_CONFIG.DCM_WS_DEMO_MAIN
+      project_owner: ACCOUNTADMIN
+      roles:
+        DBA_ADMIN: DBA_ADMIN
+        DBA_FR: DBA_FR
+      is_default_target: false
