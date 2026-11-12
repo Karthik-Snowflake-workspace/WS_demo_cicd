@@ -1,0 +1,6 @@
+
+
+DEFINE SCHEMA WS_DEMO_DEVOPS_DB_dev.sales;
+
+DEFINE SCHEMA WS_DEMO_DEVOPS_DB_dev.marketing;
+
